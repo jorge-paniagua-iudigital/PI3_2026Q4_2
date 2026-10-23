@@ -1,0 +1,32 @@
+REPORTE DEL DATAFRAME
+============================================================
+Filas: 13494
+Columnas: 6
+Duplicados: 0
+
+Columnas y tipos:
+- collection: object
+- page: object
+- question: object
+- answer: object
+- source: object
+- parent_id: float64
+
+Valores nulos por columna:
+- collection: 0
+- page: 0
+- question: 0
+- answer: 0
+- source: 0
+- parent_id: 0
+
+Estadísticas numéricas:
+       parent_id
+count  13494.000
+mean    1202.259
+std      696.300
+min        1.000
+25%      597.225
+50%     1199.350
+75%     1807.475
+max     2410.600
