@@ -1,0 +1,30 @@
+REPORTE DEL DATAFRAME
+============================================================
+Filas: 350
+Columnas: 5
+Duplicados: 0
+
+Columnas y tipos:
+- Company Name: object
+- Category: object
+- Sub Cat: object
+- Period: object
+- Value - Randomized: float64
+
+Valores nulos por columna:
+- Company Name: 0
+- Category: 0
+- Sub Cat: 0
+- Period: 0
+- Value - Randomized: 0
+
+Estadísticas numéricas:
+       Value - Randomized
+count        3.500000e+02
+mean         7.937456e+10
+std          8.116901e+10
+min          0.000000e+00
+25%          2.725000e+10
+50%          4.856700e+10
+75%          1.025000e+11
+max          5.730000e+11
