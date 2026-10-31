@@ -1,69 +1,44 @@
-# Caracterización y Análisis Descriptivo de los Ingresos Trimestrales de Potato Inc. (2015 Q1 – 2023 Q3)
+# Caracterización, Transformación y Análisis de Ingresos de Potato Inc. (2015 Q1 – 2023 Q3)
 
-Este repositorio contiene el desarrollo de la **Primera Etapa (EA2 - Ideación, Diseño y Documentación de la Necesidad)** del Proyecto Integrador de Analítica de Datos. El objetivo principal es definir, diseñar y documentar una necesidad de información financiera para apoyar la toma de decisiones estratégicas, a partir de la exploración técnica de un dataset tabular obtenido de Hugging Face.
-
----
-
-## 📌 Propósito y Necesidad Analítica
-* **Beneficiario:** Gerencia de Finanzas y Vicepresidencia Estratégica de Potato Inc.
-* **Escenario:** Escenario cuantitativo hipotético basado en series de tiempo trimestrales.
-* **Necesidad de información:** La empresa requiere un diagnóstico consolidado que compare la evolución y participación de sus ingresos trimestrales según dos categorías clave: región geográfica (`Revenue By Region`) y línea de producto (`Revenue By Product`).
-* **Pregunta de análisis:** ¿Cómo han evolucionado y se han distribuido los ingresos de Potato Inc. entre el primer trimestre de 2015 y el tercer trimestre de 2023 según las categorías de región y línea de producto?
+Este repositorio contiene el desarrollo del **Proyecto Integrador de Analítica de Datos** para la empresa **Potato Inc.**, abarcando la **Primera Etapa (AE2)** y la **Segunda Etapa (AE3 - Transformación y Enriquecimiento de Datos)**.
 
 ---
 
-## 📊 Ficha del Dataset
-* **Identificador en Hugging Face:** [`dune123/company_dataset`](https://huggingface.co/datasets/dune123/company_dataset)
-* **Entidad / Empresa:** Potato Inc.
-* **Dimensiones procesadas:** 350 filas (registros) y 5 columnas útiles.
-* **Cobertura temporal:** 35 trimestres consecutivos (desde `2015 Q1` hasta `2023 Q3`).
-* **Variables principales:** `Company Name`, `Category`, `Sub Cat`, `Period`, `Value - Randomized`.
-* **Naturaleza de datos:** Datos secundarios con valores numéricos sintéticos/aleatorizados, orientados a la caracterización descriptiva de ingresos.
+## 📌 Preguntas de Negocio Abordadas (AE3)
+1. **¿Cuáles son las subcategorías con mayor aporte financiero acumulado y promedio dentro de las dimensiones de Producto y Región?**
+   * *Hallazgo:* `Smartphones` lidera en Producto con $7,198.22 MM (52.31% de participación promedio) y `Americas` lidera en Región con $6,379.47 MM (43.24% de participación promedio).
+2. **¿Cómo han evolucionado los ingresos consolidados año tras año entre regiones y productos durante el periodo 2015 – 2023?**
+   * *Hallazgo:* Los ingresos alcanzaron su máximo histórico en el año 2022 con $4,789.48 MM consolidados.
 
 ---
 
-## 📁 Estructura del Repositorio
+## 🛠️ Transformaciones y Enriquecimiento Realizados
+* **Normalización de Tipos:** Conversión de la columna monetaria a `float64` e impartición de formato en Miles de Millones (Billions / MM).
+* **Nuevas Variables Calculadas:**
+  * `Año` (`int`): Año extraído de la variable `Period`.
+  * `Trimestre` (`str`): Trimestre (`Q1`, `Q2`, `Q3`, `Q4`) extraído de `Period`.
+  * `Valor_Miles_Millones` (`float`): Ingreso dividido entre $10^9$.
+  * `Participacion_Categoria_Pct` (`float`): Porcentaje de contribución de cada subcategoría dentro de su categoría en cada trimestre.
+
+---
+
+## 📁 Estructura Actualizada del Repositorio
 
 ```text
 .
-├── AE2/
-│   ├── documento/
-│   │   └── Proyecto_Integrador_EA2_PotatoInc.docx   # Documento formal del avance (Word)
-│   ├── notebooks/
-│   │   └── Semana_2EA2.ipynb                        # Jupyter Notebook ejecutado
-│   └── resultados/
-│       └── reportes/
-│           └── company_dataset.txt                  # Resumen .txt generado automáticamente
+├── .github/
+│   └── workflows/
+│       └── run_notebook.yml                         # Workflow de ejecución automática en GitHub Actions
+├── datos/
+│   ├── company_dataset.csv                          # Dataset crudo descargado de Hugging Face
+│   └── company_dataset_preparado.csv                # Dataset preparado y enriquecido (9 variables)
+├── reportes/
+│   ├── company_dataset_summary_ae3.txt              # Resumen descriptivo .txt generado automáticamente
+│   ├── tabla_desempeno_subcategorias.csv            # Tabla de resultados por Subcategoría
+│   └── tabla_evolucion_anual.csv                    # Tabla de evolución anual de ingresos
 ├── src/
-│   └── clases_po/                                   # Clases reutilizables en Python
-│       ├── __init__.py
-│       ├── hf_loader.py                             # Carga de datasets desde Hugging Face
-│       └── reportes.py                              # Clase para generación del reporte .txt
+│   └── sincronicas/
+│       └── Semana_2EA2.ipynb                        # Jupyter Notebook ejecutado
+├── Proyecto_Integrador_AE3_PotatoInc.docx           # Documento formal del avance (Word)
 ├── README.md                                        # Documentación general del repositorio
 └── requirements.txt                                 # Dependencias del proyecto
-```
-
----
-
-## 🛠️ Pasos de Ejecución
-
-1. **Clonar el repositorio:**
-   ```bash
-   git clone https://github.com/jorge-paniagua-iudigital/PI3_2026Q4_2.git
-   cd tu-repositorio
-   ```
-
-2. **Crear y activar entorno virtual (recomendado):**
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # En Linux/macOS
-   # .venv\Scripts\activate   # En Windows
-   ```
-
-3. **Instalar dependencias:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Ejecutar el Notebook:**
-   Abre y ejecuta secuencialmente las celdas de `AE2/notebooks/Semana_2EA2.ipynb`. El código descargará el dataset desde Hugging Face, mostrará la exploración básica de los datos y creará/actualizará automáticamente el archivo de resumen en `AE2/resultados/reportes/company_dataset.txt` con codificación UTF-8.

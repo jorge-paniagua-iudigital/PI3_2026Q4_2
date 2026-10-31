@@ -1,0 +1,38 @@
+REPORTE DEL DATAFRAME
+============================================================
+Filas: 350
+Columnas: 9
+Duplicados: 0
+
+Columnas y tipos:
+- Company Name: object
+- Category: object
+- Sub Cat: object
+- Period: object
+- Value - Randomized: float64
+- Año: int64
+- Trimestre: object
+- Valor_Miles_Millones: float64
+- Participacion_Categoria_Pct: float64
+
+Valores nulos por columna:
+- Company Name: 0
+- Category: 0
+- Sub Cat: 0
+- Period: 0
+- Value - Randomized: 0
+- Año: 0
+- Trimestre: 0
+- Valor_Miles_Millones: 0
+- Participacion_Categoria_Pct: 0
+
+Estadísticas numéricas:
+       Value - Randomized       Año  Valor_Miles_Millones  Participacion_Categoria_Pct
+count        3.500000e+02   350.000               350.000                      350.000
+mean         7.937456e+10  2018.886                79.375                       20.000
+std          8.116901e+10     2.531                81.169                       17.098
+min          0.000000e+00  2015.000                 0.000                        0.000
+25%          2.725000e+10  2017.000                27.250                        7.381
+50%          4.856700e+10  2019.000                48.567                       13.500
+75%          1.025000e+11  2021.000               102.500                       27.022
+max          5.730000e+11  2023.000               573.000                       81.639
