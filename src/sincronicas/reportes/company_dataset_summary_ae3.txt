@@ -5,10 +5,10 @@ Columnas: 9
 Duplicados: 0
 
 Columnas y tipos:
-- Company Name: object
-- Category: object
-- Sub Cat: object
-- Period: object
+- Company Name: str
+- Category: str
+- Sub Cat: str
+- Period: str
 - Value - Randomized: float64
 - Año: int64
 - Trimestre: object
